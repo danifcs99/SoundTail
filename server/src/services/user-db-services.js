@@ -16,3 +16,8 @@ export async function getUsers(filters) {
   const users = await User.find(filters).select("-password")//El .select te quita el apartado contraseña de la peticion de Postman
   return users;
 }
+
+export async function deleteUser(filters) {
+  const deletedUser = await User.deleteMany(filters);
+  return deletedUser;
+}

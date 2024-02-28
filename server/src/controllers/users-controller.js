@@ -1,4 +1,4 @@
-import { getUserByName, createUser, getUsers } from "../services/user-db-services.js";
+import { getUserByName, createUser, getUsers, deleteUser } from "../services/user-db-services.js";
 import { encryptPassword } from "../utils/encrypt.js";
 
 export async function createUserController(req, res, next) {
@@ -31,6 +31,16 @@ export async function getUsersController(req, res, next) {
   try {
     const filters = req.query;
     const users = await getUsers(filters);
+    return res.status(200).send(users);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function deleteUserController(req, res, next) {
+  try {
+    const filters = req.query;
+    const users = await deleteUser(filters);
     return res.status(200).send(users);
   } catch (error) {
     next(error);

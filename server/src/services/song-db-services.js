@@ -15,3 +15,8 @@ export async function getSongs(filters) {
   const songs = await Song.find(filters);
   return songs;
 }
+
+export async function deleteSong(filters) {
+  const deleteSong = await Song.deleteMany(filters);
+  return deleteSong;
+}
