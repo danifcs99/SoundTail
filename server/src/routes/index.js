@@ -1,11 +1,14 @@
 import express from 'express';
-import { login } from '../controllers/login-controller.js';
-import miscRouter from './misc-router.js';
+import loginRoutes from './login-routes.js';
+import userRoutes from './user-routes.js';
+import songRoutes from './song-routes.js';
 
 const router = express.Router();
 
-router.post('/login', login);
+router.use('/login', loginRoutes);
 
-router.use(miscRouter);
+router.use('/users', userRoutes);
+
+router.use('/songs', songRoutes);
 
 export default router;
