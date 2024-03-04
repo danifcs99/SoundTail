@@ -21,3 +21,12 @@ export async function deleteUser(filters) {
   const deletedUser = await User.deleteMany(filters);
   return deletedUser;
 }
+
+export async function updateUser(email, nuevoUser) {
+  const updatedUser = await User.findOneAndUpdate({email: email}, {$set: nuevoUser});
+  if(updatedUser){
+    return {success: true, message: 'User updated successfully'};
+  }else {
+    return {success: false, message: 'Error updating user'};
+  }
+}

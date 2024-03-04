@@ -1,4 +1,4 @@
-import { getUserByName, createUser, getUsers, deleteUser } from "../services/user-db-services.js";
+import { getUserByName, createUser, getUsers, deleteUser, updateUser } from "../services/user-db-services.js";
 import { encryptPassword } from "../utils/encrypt.js";
 
 export async function createUserController(req, res, next) {
@@ -42,6 +42,18 @@ export async function deleteUserController(req, res, next) {
     const filters = req.query;
     const users = await deleteUser(filters);
     return res.status(200).send(users);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function updateUserController(req, res, next) {
+  try {
+    const email = req.params.email;
+    const newUser = req.body;
+
+    const userCambiado = await updateUser(email, newUser);
+    return res.status(200).send(userCambiado);
   } catch (error) {
     next(error);
   }
