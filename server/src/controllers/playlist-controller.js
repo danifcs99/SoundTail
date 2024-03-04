@@ -1,4 +1,4 @@
-import { createPlaylist, getPlaylistByName, getPlaylists, deletePlaylist } from "../services/playlist-db-services.js";
+import { createPlaylist, getPlaylistByName, getPlaylists, deletePlaylist, updatePlaylist } from "../services/playlist-db-services.js";
 
 export async function createPlaylistController(req, res, next) {
   try {
@@ -36,6 +36,18 @@ export async function deletePlaylistController(req, res, next) {
     const playlist = await deletePlaylist(filters);
     return res.status(200).send(playlist);
   } catch (error) {
+    next(error);
+  }
+}
+
+export async function updatePlaylistController(req, res, next){
+  try{
+    const name = req.params.name;
+    const newPlaylist = req.body;
+
+    const playlistCambiado = await updatePlaylist(name, newPlaylist);
+    return res.status(200).send(playlistCambiado);
+  }catch (error){
     next(error);
   }
 }

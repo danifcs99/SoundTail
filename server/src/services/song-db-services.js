@@ -20,3 +20,12 @@ export async function deleteSong(filters) {
   const deleteSong = await Song.deleteMany(filters);
   return deleteSong;
 }
+
+export async function updateSong(name, updateSong) {
+  const updatedSong = await Song.findOneAndUpdate({name: name}, updateSong);
+  if(updatedSong){
+    return{success: true, message: 'Song updated successfully'};
+  }else{
+    return{success: false, message: 'Error updating Song'}
+  }
+}

@@ -21,3 +21,12 @@ export async function deletePlaylist(filters) {
   return deletedPlaylist;
 }
 
+export async function updatePlaylist(name, nuevaPlaylist){
+  const updatedPlaylist = await Playlist.findOneAndUpdate({name: name }, nuevaPlaylist);
+  if(updatePlaylist){
+    return{success: true, message: 'PlayList updated successfully'};
+  }else{
+    return{success: false, message: 'Error updating PlayList'};
+  }
+}
+

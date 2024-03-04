@@ -1,4 +1,4 @@
-import  {createdSong, getSongByName, getSongs, deleteSong} from "../services/song-db-services.js";
+import  {createdSong, getSongByName, getSongs, deleteSong, updateSong} from "../services/song-db-services.js";
 
 export async function createSongController(req, res, next) {
   try {
@@ -35,6 +35,19 @@ export async function deleteSongController (req, res, next) {
     const filters = req.query;
     const song = await deleteSong(filters);
     return res.status(200).send(song);
+  } catch (error) {
+    next(error);
+  }
+}
+
+
+export async function updateSongController(req, res, next) {
+  try {
+    const name = req.params.name;
+    const newSong = req.body;
+
+    const songCambiado = await updateSong(name, newSong);
+    return res.status(200).send(songCambiado);
   } catch (error) {
     next(error);
   }
