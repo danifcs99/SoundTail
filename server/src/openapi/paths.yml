@@ -1,6 +1,62 @@
-/ping:
-  get:
-    summary: pong
+'/login':
+  post:
+    summary: Obtener Token para realizar los endpoints.
+    description: Dependiendo del tipo de usuario.
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              password:
+                type: string
     responses:
       '200':
-        description: ping/pong
+        description: Respuesta Exitosa
+        content:
+          application/json:
+            example:
+              token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTYxZGUxZWJlYjI2ZGRjZmQ3YzZmMCIsIm5hbWUiOiJtYW51ZWwgcGFjbyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwOTkxMTA3MywiZXhwIjoxNzA5OTE0NjczfQ.cGYMAy3esGxA57GcGgzIOGsFaoxmUivzR2TNbIJ0_AY'
+      '404':
+        description: Usuario o contraseña incorrectos
+
+
+'/users':
+  post:
+    summary: Crear un Usuario.
+    description: Crear un Usuario.
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              email:
+                type: string
+              password:
+                type: string
+    responses:
+      '201':
+        description: Usuario Creado
+        content:
+          application/json:
+            example:
+              {
+                "name": "manuel paco",
+                "email": "manuelpaco@gmail.com",
+                "password": "$2b$10$LD3osNyIWLxXFkoLPQgbmupOl1I5oB9UFtczf6M6IskHVXW.1h./K",
+                "likeSongs": [],
+                "playlist": [],
+                "role": "user",
+                "_id": "65eb34c36872c4d8e8d9c47a",
+                "createdAt": "2024-03-08T15:54:43.367Z",
+                "updatedAt": "2024-03-08T15:54:43.367Z",
+                "__v": 0
+              }
+

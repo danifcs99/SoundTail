@@ -14,8 +14,8 @@ function parseYaml(file) {
 export const swaggerDoc = {
     openapi: "3.0.0",
     info: {
-        title: "My simple API",
-        description: "A simple API to learn how to write OpenAPI Specification",
+        title: "SoundTail API",
+        description: "API SoundTail, para consumir todos los datos de SoundTail",
     },
     paths: parseYaml('paths'),
     components: {
