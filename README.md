@@ -76,3 +76,6 @@ Bienvenido a la API de SoundTail. Esta API proporciona acceso a diversas funcion
 - ```express``` 
 - ```express-openapi```
 
+## Desplegado
+-Render<br>
+[SoundTail API](https://soundtail.onrender.com)
