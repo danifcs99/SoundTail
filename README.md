@@ -17,57 +17,58 @@ Bienvenido a la API de SoundTail. Esta API proporciona acceso a diversas funcion
 
 ## Arquitectura 
 
-📦server
- ┣ 📂.node_modules
- ┣ 📂src
- ┃ ┣ 📂config
- ┃ ┃ ┣📜morgan.js
- ┃ ┣ 📂controllers
- ┃ ┃ ┣📜login-controller.js 
- ┃ ┃ ┣📜playlist-controller.js
- ┃ ┃ ┣📜users-controller.js
- ┃ ┣ 📂loaders
- ┃ ┃ ┣📜express-loader.js
- ┃ ┃ ┣📜index.js
- ┃ ┃ ┣📜mongodb-loader.js
- ┃ ┣ 📂middlewares
- ┃ ┃ ┣📜admin-middleware.js
- ┃ ┃ ┣📜auth-middleware.js
- ┃ ┃ ┣📜error-middleware.js
- ┃ ┃ ┣📜query-middleware.js
- ┃ ┣ 📂openapi
- ┃ ┃ ┣📜examples.yml
- ┃ ┃ ┣📜index.js
- ┃ ┃ ┣📜paths.yml
- ┃ ┃ ┣📜responses.yml
- ┃ ┃ ┣📜schemas.yml
- ┃ ┃ ┣📜security.js
- ┃ ┃ ┣ 📂models
- ┃ ┃ ┣📜index.js
- ┃ ┃ ┣📜Playlist.js
- ┃ ┃ ┣📜Song.js
- ┃ ┃ ┣📜User.js
- ┃ ┃ ┣ 📂routes
- ┃ ┃ ┣📜index.js
- ┃ ┃ ┣📜login-routes.js
- ┃ ┃ ┣📜playlist-routes.js
- ┃ ┃ ┣📜song-routes.js
- ┃ ┃ ┣📜user-routes.js
- ┃ ┃ ┣ 📂services
- ┃ ┃ ┣📜playlist-db-services.js
- ┃ ┃ ┣📜song-db-services.js
- ┃ ┃ ┣📜user-db-services.js
- ┃ ┣ 📜app.js
- ┃ ┣ 📜config.js
- ┃ ┗ 📜index.js
- ┣ 📜.editorconfig
- ┣ 📜.env
- ┣ 📜.env.template
- ┣ 📜.gitignore
- ┣ 📜eslintrc.json
- ┣ 📜README.md
- ┣ 📜package-lock.json
- ┗ 📜package.json
+📦 server
+ ┣ 📂 .node_modules
+ ┣ 📂 src
+    ┣ 📂 config
+       ┣ 📜 morgan.js
+    ┣ 📂 controllers
+       ┣ 📜 login-controller.js
+       ┣ 📜 playlist-controller.js
+       ┣ 📜 users-controller.js
+    ┣ 📂 loaders
+       ┣ 📜 express-loader.js
+       ┣ 📜 index.js
+       ┣ 📜 mongodb-loader.js
+    ┣ 📂 middlewares
+       ┣ 📜 admin-middleware.js
+       ┣ 📜 auth-middleware.js
+       ┣ 📜 error-middleware.js
+       ┣ 📜 query-middleware.js
+    ┣ 📂 openapi
+       ┣ 📜 examples.yml
+       ┣ 📜 index.js
+       ┣ 📜 paths.yml
+       ┣ 📜 responses.yml
+       ┣ 📜 schemas.yml
+       ┣ 📜 security.js
+       ┣ 📂 models
+          ┣ 📜 index.js
+          ┣ 📜 Playlist.js
+          ┣ 📜 Song.js
+          ┣ 📜 User.js
+       ┣ 📂 routes
+          ┣ 📜 index.js
+          ┣ 📜 login-routes.js
+          ┣ 📜 playlist-routes.js
+          ┣ 📜 song-routes.js
+          ┣ 📜 user-routes.js
+       ┣ 📂 services
+          ┣ 📜 playlist-db-services.js
+          ┣ 📜 song-db-services.js
+          ┣ 📜 user-db-services.js
+    ┣ 📜 app.js
+    ┣ 📜 config.js
+    ┗ 📜 index.js
+ ┣ 📜 .editorconfig
+ ┣ 📜 .env
+ ┣ 📜 .env.template
+ ┣ 📜 .gitignore
+ ┣ 📜 eslintrc.json
+ ┣ 📜 README.md
+ ┣ 📜 package-lock.json
+ ┗ 📜 package.json
+
 
 ## Main dependencias 
 
