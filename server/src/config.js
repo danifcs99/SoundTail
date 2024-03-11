@@ -10,7 +10,8 @@ const config = {
       port: process.env.MONGODB_PORT,
       dbName: process.env.MONGODB_DBNAME,
       user: process.env.MONGODB_USER,
-      password: process.env.MONGODB_PASSWORD
+      password: process.env.MONGODB_PASSWORD,
+      url: process.env.MONGODB_URL
     }
 }
 export default config;
