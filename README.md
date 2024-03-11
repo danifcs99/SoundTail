@@ -16,7 +16,7 @@ Bienvenido a la API de SoundTail. Esta API proporciona acceso a diversas funcion
 4. 
 
 ## Arquitectura 
-
+```
 📦 server
  ┣ 📂 .node_modules
  ┣ 📂 src
@@ -68,6 +68,7 @@ Bienvenido a la API de SoundTail. Esta API proporciona acceso a diversas funcion
  ┣ 📜 README.md
  ┣ 📜 package-lock.json
  ┗ 📜 package.json
+```
 
 
 ## Main dependencias 
