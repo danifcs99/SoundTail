@@ -59,4 +59,50 @@
                 "updatedAt": "2024-03-08T15:54:43.367Z",
                 "__v": 0
               }
+      '400':
+        description: Solicitud Incorrecta
+        content:
+          application/json:
+            example:
+              error: "La solicitud no es válida. Verifique los datos proporcionados."
+
+  get:
+    summary: Obtener todos los usuarios.
+    description: Obtener todos los usuarios de la base de datos.
+    security:
+      - bearerAuth: []
+    responses:
+      '200':
+        description: Respuesta Exitosa
+        content:
+          application/json:
+            example:
+              -
+                name: "Usuario1"
+                email: "usuario1@example.com"
+                role: "user"
+                _id: "id_usuario1"
+                createdAt: "2024-03-08T15:54:43.367Z"
+                updatedAt: "2024-03-08T15:54:43.367Z"
+                __v: 0
+              -
+                name: "Usuario2"
+                email: "usuario2@example.com"
+                role: "user"
+                _id: "id_usuario2"
+                createdAt: "2024-03-08T15:54:43.367Z"
+                updatedAt: "2024-03-08T15:54:43.367Z"
+                __v: 0
+      '401':
+        description: No autorizado
+        content:
+          application/json:
+            example:
+              error: "No autorizado. Se requiere un token válido."
+      '500':
+        description: Error del Servidor
+        content:
+          application/json:
+            example:
+              error: "Ocurrió un error interno del servidor al procesar la solicitud."
 
