@@ -102,7 +102,7 @@ function Login() {
   };
 
   return (
-    <div className="relative w-screen h-screen bg-gray-100 flex items-center justify-center">
+    <div className="relative  md:w-screen w-[90%] h-screen bg-gray-100 flex items-center justify-center">
       <ToastContainer />
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-75"></div>
       <div className="relative w-full max-w-md p-8 bg-white rounded-lg shadow-2xl backdrop-blur-md flex flex-col items-center justify-center">

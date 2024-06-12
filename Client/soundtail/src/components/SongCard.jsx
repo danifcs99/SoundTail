@@ -1,6 +1,17 @@
-import corazon from '../assets/img/corazon.png'
+import React, { useState, useEffect } from 'react';
+import corazon from '../assets/img/corazon.png';
 
 const SongCard = ({ song, onSelect }) => {
+  const [liked, setLiked] = useState(false);
+  const [buttonColor, setButtonColor] = useState('#C8E6C9'); // Color verde claro por defecto
+
+  useEffect(() => {
+    const likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
+    const isLiked = likedSongs.some(likedSong => likedSong.url === song.song);
+    setLiked(isLiked);
+    setButtonColor(isLiked ? '#FFCDD2' : '#C8E6C9'); // Cambia el color si está marcado como favorito
+  }, [song]);
+
   const handlePlayButtonClick = () => {
     const songData = {
       url: song.song,
@@ -10,13 +21,21 @@ const SongCard = ({ song, onSelect }) => {
     onSelect(songData);
   };
 
-  const handleLikeButtonClick = () => {
-    // Aquí guardamos los datos de la canción en el almacenamiento local
-    const likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
-    likedSongs.push(song);
+  const handleLikeButtonClick = (e) => {
+    e.stopPropagation(); // Evitar que el evento onClick del contenedor se dispare
+
+    let likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
+    if (liked) {
+      likedSongs = likedSongs.filter(likedSong => likedSong.url !== song.song);
+    } else {
+      likedSongs.push(song);
+    }
     localStorage.setItem('likedSongs', JSON.stringify(likedSongs));
-    console.log('Canción añadida a favoritos:', song);
-    // Puedes agregar algún mensaje de confirmación aquí
+    
+    // Actualizar el estado liked y el color del botón
+    setLiked(!liked);
+    setButtonColor(!liked ? '#FFCDD2' : '#C8E6C9'); // Cambia el color al marcar/desmarcar
+    console.log(`Canción ${liked ? 'eliminada de' : 'añadida a'} favoritos:`, song);
   };
 
   return (
@@ -26,8 +45,12 @@ const SongCard = ({ song, onSelect }) => {
         <h2 className="text-xl font-semibold mb-2">{song.name}</h2>
         <p className="text-gray-600">{song.artist}</p>
         <p className="text-gray-600">Duración: {song.duration}</p>
-        <button onClick={handleLikeButtonClick} className="bg-green-300 text-white px-4 py-2 mt-4 rounded-full flex items-center justify-center hover:bg-green-400 hover:shadow-md">
-        <img src={corazon} alt="Logo" className="w-4" />
+        <button 
+          onClick={handleLikeButtonClick} 
+          style={{ backgroundColor: buttonColor }}
+          className="text-white px-4 py-2 mt-4 rounded-full flex items-center justify-center hover:bg-gray-400 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+        >
+          <img src={corazon} alt="Logo" className="w-4" />
         </button>
       </div>
     </div>
